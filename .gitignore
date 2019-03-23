@@ -2,3 +2,6 @@ node_modules
 *.txt
 *.tmp
 *.logs
+
+# ide
+.idea
