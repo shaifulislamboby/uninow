@@ -1,0 +1,3 @@
+anyone can access the api as userid is being provided. as of now it requires only user id it may be improved
+
+jwt token can be modified or verified  from the server side only. 
