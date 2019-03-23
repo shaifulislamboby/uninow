@@ -6,7 +6,8 @@ const log = require('debug')('server:parser:grades');
 // helper function
 const parseMeta = require('./parse-meta');
 const parseGrades = require('./parse-grades');
-const mapDistribution = require('./map-distribution')
+const mapDistribution = require('./map-distribution');
+const validate = require('./validator');
 
 async function fetchPage(url) {
     try {
@@ -44,7 +45,7 @@ function parseData(content) {
         const pTagContents = $('#info').find('p').toArray()
             .map((el) => $(el).text().trim())
             .filter((line) => line.length > 0);
-        log(`PTAGS: ${JSON.stringify(pTagContents, null, 2)}`);
+        //log(`PTAGS: ${JSON.stringify(pTagContents, null, 2)}`);
         // find course info
         data = { ...data, ...parseMeta(pTagContents) };
 
@@ -53,7 +54,7 @@ function parseData(content) {
 
         for(const el of tableRows) {
             const dataCells = $(el).find('td').toArray().map((td) => $(td).text().trim());
-            log(`TDTAGS: ${JSON.stringify(dataCells, null, 2)}`);
+            //log(`TDTAGS: ${JSON.stringify(dataCells, null, 2)}`);
             const courseGrade = parseGrades(dataCells);
             if (courseGrade != null) {
                 data.grades.push(courseGrade);
@@ -76,7 +77,7 @@ async function parsePage() {
         log(`url to parse = ${pageUrl}`);
         const parsedData = parseData( await fetchPage(pageUrl) );
 
-        if (parsedData == null) {
+        if (!validate(parsedData)) {
             throw new Error('Content parser failed to extract data');
         }
 
