@@ -28,7 +28,7 @@ async function verifyAuthToken(ctx, next) {
             throw err;
         }
         // else attach userid to request context
-        ctx.state.userId = decodedToken.userId;
+        ctx.state.userid = decodedToken.userid;
 
         // pass along alles gut
         await next();

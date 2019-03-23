@@ -56,7 +56,20 @@ async function addLoginDate(userid) {
     }
 }
 
+async function addCourseName(userid, courseName) {
+    try {
+
+        await User.findOneAndUpdate({ userid }, { '$set': { courseName } }).exec();
+        return null;
+
+    } catch (err) {
+        log(err.message);
+        return err;
+    }
+}
+
 exports = module.exports = {
     User,
-    addLoginDate
+    addLoginDate,
+    addCourseName
 }

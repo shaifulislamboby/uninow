@@ -10,10 +10,10 @@ const JWT_CONFIG = {
     issuer: `${config.get('server.host')}`
 };
 
-function generateNewToken(userId) {
+function generateNewToken(userid) {
     try {
         const jwtContent = {
-            userId: userId
+            userid
         };
 
         const token = jwt.sign(jwtContent, config.get('jwtConfig.privateKey'), JWT_CONFIG);

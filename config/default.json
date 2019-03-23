@@ -8,7 +8,7 @@
     "host": "localhost",
     "port": 6379,
     "db": 4,
-    "ttlMs": 3600000
+    "ttlInSec": 3600
   },
   "server": {
     "host": "localhost",
@@ -17,10 +17,13 @@
   "jwtConfig": {
     "privateKey": "blahblahblahhaha",
     "algorithm": "HS256",
-    "expiresInSec": 60
+    "expiresInSec": 300
 
   },
   "debug": {
     "enable": false
+  },
+  "gradePages": {
+    "sampleUrl": "https://shaifulislamboby.github.io/uninow/index.html"
   }
 }

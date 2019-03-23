@@ -2,6 +2,7 @@ const Router = require('koa-router');
 const { auth: mwAuth } = require('../middlewares');
 const router = new Router();
 const createOrLogin = require('../controllers/session')
+const fetchGrades = require('../controllers/fetch-grades')
 
 router.get('/', async (ctx, next) => {
     ctx.response.body = {
@@ -38,10 +39,17 @@ router.post('/session/create',async (ctx, next) => {
 
 })
 
-router.get('/grades/fetch', mwAuth,  async (ctx, next) => {
-    ctx.response.body = {
-        message: 'Hello from grades/fetch'
-    };
+router.post('/grades/fetch', mwAuth,  async (ctx, next) => {
+    const gradeData = await fetchGrades(ctx.state.userid, ctx.redis);
+    if (gradeData == null) {
+        ctx.response.status = 500;
+        ctx.response.body = {
+            message: 'Failed to fetch grades. Please try again later'
+        };
+        return;
+    }
+
+    ctx.response.body = gradeData;
 })
 
 exports = module.exports = router;
