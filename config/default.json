@@ -1,0 +1,26 @@
+{
+  "db": {
+    "host": "mongodb://localhost",
+    "port": 27017,
+    "name": "uninow"
+  },
+  "redis": {
+    "host": "localhost",
+    "port": 6379,
+    "db": 4,
+    "ttlMs": 3600000
+  },
+  "server": {
+    "host": "localhost",
+    "port": 8080
+  },
+  "jwtConfig": {
+    "privateKey": "blahblahblahhaha",
+    "algorithm": "HS256",
+    "expiresInSec": 60
+
+  },
+  "debug": {
+    "enable": false
+  }
+}
