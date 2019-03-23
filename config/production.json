@@ -1,1 +1,13 @@
-{}
+{
+  "db": {
+    "host": "mongodb://mongo",
+    "port": 27017,
+    "name": "uninow"
+  },
+  "redis": {
+    "host": "redis",
+    "port": 6379,
+    "db": 4,
+    "ttlInSec": 3600
+  }
+}

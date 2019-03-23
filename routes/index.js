@@ -4,15 +4,7 @@ const router = new Router()
 const createOrLogin = require('../controllers/session')
 const fetchGrades = require('../controllers/fetch-grades')
 
-router.get('/', async (ctx, next) => {
-  ctx.response.body = {
-    message: 'Hello World!'
-  }
-})
-
 router.post('/session/create', async (ctx, next) => {
-  console.log(`DATA: ${JSON.stringify(ctx.query, null, 2)}`)
-
   const { userid } = ctx.query
 
   // validate

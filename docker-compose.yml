@@ -1,0 +1,40 @@
+version: "3.0"
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    hostname: api
+    container_name: uninow_api
+    restart: on-failure
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - mongo
+      - redis
+    networks:
+      - api_bridge
+    ports:
+      - 8080:8080
+  mongo:
+    image: mongo:4-xenial
+    hostname: mongo
+    container_name: uninow_mongo
+    networks:
+      - api_bridge
+    ports:
+      - 27017:27017
+    logging:
+      driver: none
+  redis:
+    image: redis:5-alpine
+    hostname: redis
+    container_name: uninow_redis
+    networks:
+      - api_bridge
+    ports:
+      - 6379:6379
+    logging:
+      driver: none
+networks:
+  api_bridge:
