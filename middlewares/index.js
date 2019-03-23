@@ -1,4 +1,4 @@
 exports = module.exports = {
-    logResponseTime: require('./mw-log'),
-    auth: require('./mw-auth')
-};
+  logResponseTime: require('./mw-log'),
+  auth: require('./mw-auth')
+}

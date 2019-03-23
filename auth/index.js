@@ -1,1 +1,1 @@
-exports = module.exports = require('./auth-jwt');
+exports = module.exports = require('./auth-jwt')

@@ -12,23 +12,23 @@
     },
  * @param txtArr
  */
-function parseGrades(txtArr) {
-    if (txtArr.length !== 7) {
-        return null;
-    }
+function parseGrades (txtArr) {
+  if (txtArr.length !== 7) {
+    return null
+  }
 
-    // add data
-    const data = {
-        id: txtArr[0].trim(),
-        name: txtArr[1].trim(),
-        semester: txtArr[2].trim(),
-        grade: txtArr[3].trim(),
-        status: txtArr[4].trim(),
-        note: txtArr[5].trim(),
-        date: txtArr[6].trim()
-    };
+  // add data
+  const data = {
+    id: txtArr[0].trim(),
+    name: txtArr[1].trim(),
+    semester: txtArr[2].trim(),
+    grade: txtArr[3].trim(),
+    status: txtArr[4].trim(),
+    note: txtArr[5].trim(),
+    date: txtArr[6].trim()
+  }
 
-    return data;
+  return data
 }
 
-exports = module.exports = parseGrades;
+exports = module.exports = parseGrades
